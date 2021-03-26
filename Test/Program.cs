@@ -16,7 +16,7 @@ namespace Test
             {
                 while (true)
                 {
-                    var v1 = api.LocalPlayer.Weapons.USP.Ammo;
+                    var v1 = api.Game.LocalPlayer.Health;
                     Console.WriteLine(v1);
                 }
             });
