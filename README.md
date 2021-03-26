@@ -15,7 +15,7 @@ int AK47Ammo = api.Game.LocalPlayer.Weapons.AK47.Ammo;
 int M4A4Ammo = api.Game.LocalPlayer.Weapons.M4A4.Ammo;
 int DesertEagleAmmo = api.Game.LocalPlayer.Weapons.DesertEagle.Ammo;
 int USPAmmo = api.Game.LocalPlayer.Weapons.USP.Ammo;
-int  GlockAmmo = api.Game.LocalPlayer.Weapons.Glock.Ammo;
+int GlockAmmo = api.Game.LocalPlayer.Weapons.Glock.Ammo;
 
 /* Weapons IsReload */
 bool AWPIsReload = api.Game.LocalPlayer.Weapons.AWP.Reload;
