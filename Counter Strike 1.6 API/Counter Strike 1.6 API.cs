@@ -88,12 +88,14 @@ namespace Counter_Strike_1._6_API
                 {
                     public _DesertEagle_ DesertEagle;
                     public _USP_ USP;
+                    public _Glock_ Glock;
                     public _M4A4_ M4A4;
                     public _Weapons_()
                     {
                         DesertEagle = new _DesertEagle_();
                         USP = new _USP_();
                         M4A4 = new _M4A4_();
+                        Glock = new _Glock_();
                     }
                     public class _M4A4_
                     {
@@ -143,6 +145,40 @@ namespace Counter_Strike_1._6_API
                                     var healthadd = clientdll + 0x0000C188 + 994040;
                                     var healthadd2 = healthadd + 0xA24;
                                     int health = process.Memory.Read<int>(healthadd2);
+                                    return health;
+                                }
+                                else { return -1; }
+                            }
+                        }
+                    }
+                    public class _Glock_
+                    {
+                        public bool Reload
+                        {
+                            get
+                            {
+                                var process = new ProcessSharp(Settings.game, MemoryType.Remote);
+                                if (process != null)
+                                {
+                                    var clientdll = Settings.getModuleAdress("client.dll", Settings.game);
+                                    var healthadd = clientdll + 0xF8B2C;
+                                    var healthadd2 = healthadd + 0xC;
+                                    int health = process.Memory.Read<int>(healthadd2);
+                                    return Convert.ToBoolean(health);
+                                }
+                                else { return false; }
+                            }
+                        }
+                        public int Ammo
+                        {
+                            get
+                            {
+                                var process = new ProcessSharp(Settings.game, MemoryType.Remote);
+                                if (process != null)
+                                {
+                                    var clientdll = Settings.getModuleAdress("client.dll", Settings.game);
+                                    var healthadd = clientdll + 0xF8B2C;
+                                    int health = process.Memory.Read<int>(healthadd);
                                     return health;
                                 }
                                 else { return -1; }
