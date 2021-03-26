@@ -23,7 +23,7 @@ namespace Counter_Strike_1._6_API
             {
                 get
                 {
-
+                    return 0;
                 }
             }
         }
