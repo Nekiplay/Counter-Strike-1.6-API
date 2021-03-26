@@ -12,14 +12,8 @@ namespace Test
         static void Main(string[] args)
         {
             Counter_Strike_1_6_API api = new Counter_Strike_1_6_API();
-            Task.Factory.StartNew(() =>
-            {
-                while (true)
-                {
-                    var v1 = api.Game.LocalPlayer.Health;
-                    Console.WriteLine(v1);
-                }
-            });
+            var v1 = api.Game.LocalPlayer.Weapons.USP.Silencer;
+            Console.WriteLine(v1);
             Console.ReadLine();
         }
     }

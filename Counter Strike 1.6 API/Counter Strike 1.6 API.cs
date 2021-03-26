@@ -88,13 +88,89 @@ namespace Counter_Strike_1._6_API
                 {
                     public _DesertEagle_ DesertEagle;
                     public _USP_ USP;
+                    public _M4A4_ M4A4;
                     public _Weapons_()
                     {
                         DesertEagle = new _DesertEagle_();
                         USP = new _USP_();
+                        M4A4 = new _M4A4_();
+                    }
+                    public class _M4A4_
+                    {
+                        public bool Silencer
+                        {
+                            get
+                            {
+                                var process = new ProcessSharp(Settings.game, MemoryType.Remote);
+                                if (process != null)
+                                {
+                                    var clientdll = Settings.getModuleAdress("client.dll", Settings.game);
+                                    var healthadd = clientdll + 0x0000C188 + 994040;
+                                    var healthadd2 = healthadd + 0xA30 + 0x50;
+                                    int health = process.Memory.Read<int>(healthadd2);
+                                    if (health == 4)
+                                    {
+                                        return true;
+                                    } else { return false; }
+                                }
+                                else { return false; }
+                            }
+                        }
+                        public bool Reload
+                        {
+                            get
+                            {
+                                var process = new ProcessSharp(Settings.game, MemoryType.Remote);
+                                if (process != null)
+                                {
+                                    var clientdll = Settings.getModuleAdress("client.dll", Settings.game);
+                                    var healthadd = clientdll + 0x0000C188 + 994040;
+                                    var healthadd2 = healthadd + 0xA30;
+                                    int health = process.Memory.Read<int>(healthadd2);
+                                    return Convert.ToBoolean(health);
+                                }
+                                else { return false; }
+                            }
+                        }
+                        public int Ammo
+                        {
+                            get
+                            {
+                                var process = new ProcessSharp(Settings.game, MemoryType.Remote);
+                                if (process != null)
+                                {
+                                    var clientdll = Settings.getModuleAdress("client.dll", Settings.game);
+                                    var healthadd = clientdll + 0x0000C188 + 994040;
+                                    var healthadd2 = healthadd + 0xA24;
+                                    int health = process.Memory.Read<int>(healthadd2);
+                                    return health;
+                                }
+                                else { return -1; }
+                            }
+                        }
                     }
                     public class _USP_
                     {
+                        public bool Silencer
+                        {
+                            get
+                            {
+                                var process = new ProcessSharp(Settings.game, MemoryType.Remote);
+                                if (process != null)
+                                {
+                                    var clientdll = Settings.getModuleAdress("client.dll", Settings.game);
+                                    var healthadd = clientdll + 0x0000D710 + 0xEB154;
+                                    var healthadd2 = healthadd + 0x34 + 0x50;
+                                    int health = process.Memory.Read<int>(healthadd2);
+                                    if (health == 1)
+                                    {
+                                        return true;
+                                    }
+                                    else { return false; }
+                                }
+                                else { return false; }
+                            }
+                        }
                         public bool Reload
                         {
                             get
